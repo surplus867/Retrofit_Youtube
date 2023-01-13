@@ -2,59 +2,64 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="10dp">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/dataRoot"
         android:layout_width="match_parent"
         android:layout_height="130dp"
         android:layout_marginTop="50dp"
-        android:background="@drawable/bg_raw"
+        android:background="@drawable/bg_details"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guildLine"
+            android:id="@+id/guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_begin="150dp" />
 
         <TextView
-            android:id="@+id/tvMovieName"
+            android:id="@+id/tvMovieTItle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="16dp"
-            android:text="Movie Name"
+            android:fontFamily="sans-serif-light"
+            android:text="movieName"
             android:textColor="@color/SandyTan"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guildLine"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imgRate"
+            android:id="@+id/imgVote"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/ic_round_star_24"
-            app:layout_constraintStart_toStartOf="@+id/guildLine"
-            app:layout_constraintTop_toBottomOf="@+id/tvMovieName" />
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/tvMovieTItle" />
 
-        <ImageView
+        <TextView
+            android:id="@+id/tvRate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rate"
-            android:textColor="@color/SandyTan"
+            android:layout_marginStart="4dp"
+            android:text="TextView"
+            android:textColor="@color/white"
             android:textSize="10sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imgRate"
-            app:layout_constraintStart_toStartOf="@+id/imgRate"
-            app:layout_constraintTop_toTopOf="@+id/imgRate" />
+            app:layout_constraintBottom_toBottomOf="@+id/imgVote"
+            app:layout_constraintStart_toEndOf="@+id/imgVote"
+            app:layout_constraintTop_toTopOf="@+id/imgVote" />
+
 
         <ImageView
             android:id="@+id/imgLang"
@@ -62,13 +67,15 @@
             android:layout_height="15dp"
             android:layout_marginTop="8dp"
             android:src="@drawable/ic_baseline_language_24"
-            app:layout_constraintStart_toStartOf="@+id/guildLine"
-            app:layout_constraintTop_toBottomOf="@+id/imgRate" />
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/imgVote" />
 
         <TextView
+            android:id="@+id/tvLang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lang"
+            android:layout_marginStart="4dp"
+            android:text="TextView"
             android:textColor="@color/white"
             android:textSize="10sp"
             android:textStyle="bold"
@@ -82,19 +89,22 @@
             android:layout_height="15dp"
             android:layout_marginTop="8dp"
             android:src="@drawable/ic_baseline_date_range_24"
-            app:layout_constraintTop_toBottomOf="@+id/imgLang"
-            app:layout_constraintStart_toStartOf="@+id/guildLine"/>
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/imgLang" />
 
         <TextView
+            android:id="@+id/tvMovieDateRelease"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Date"
+            android:text="Date Release"
             android:textColor="@color/white"
             android:textSize="10sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/imgDate"
-            app:layout_constraintTop_toTopOf="@+id/imgDate"
-            app:layout_constraintBottom_toBottomOf="@+id/imgDate"/>
+            android:layout_marginStart="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgDate"
+            app:layout_constraintStart_toEndOf="@+id/imgDate"
+            app:layout_constraintTop_toTopOf="@+id/imgDate" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -102,10 +112,10 @@
         android:id="@+id/imgRoot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/dataRoot"
         app:layout_constraintStart_toStartOf="@id/dataRoot"
-        app:layout_constraintBottom_toBottomOf="@+id/dataRoot"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="20dp">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgMovie"
@@ -115,13 +125,12 @@
             android:background="@color/white"
             app:shapeAppearanceOverlay="@style/RoundedImageView"
             app:srcCompat="@drawable/poster_placeholder"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
